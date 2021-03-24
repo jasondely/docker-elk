@@ -40,6 +40,18 @@ services:
         source: ./logstash/pipeline
         target: /usr/share/logstash/pipeline
         read_only: true
+      - type: bind
+        source: /var/log/bro/conn.log
+        target: /var/log/bro/conn.log
+        read_only: true
+      - type: bind
+        source: /var/log/snort/alert_syslog.log
+        target: /var/log/snort/alert_syslog.log
+        read_only: true
+      - type: bind
+        source: /var/log/suricata/eve.json
+        target: /var/log/suricata/eve.json
+        read_only: true
     ports:
       - "5044:5044"
       - "5000:5000/tcp"
